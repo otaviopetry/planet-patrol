@@ -2,11 +2,10 @@ import './App.css';
 import React from 'react';
 import { mapBoxId, mapBoxToken } from './env.js';
 import L from 'leaflet';
-import { MapContainer, TileLayer, Marker, Popup, GeoJSON, CircleMarker } from 'react-leaflet';
+import { MapContainer, TileLayer, Popup, GeoJSON } from 'react-leaflet';
+import geoData from './planet_patrol.json';
 
-import geoData from './planetpatrol.js';
-
-function App() {  
+function App() {
 
   const geojsonMarkerOptions = (radius) => {
     return {
