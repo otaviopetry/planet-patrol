@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  margin: 0;
 }
 
 .App-logo {
@@ -35,4 +36,26 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.main-container {
+  height: 100%;
+  width: 100%; 
+  margin: 0;
+  position: relative;
+}
+
+.map-container {
+  height: 100vh;
+  width: 100%;
+}
+
+.headline {
+  display: block;
+  height: 30px;
+  position: absolute;
+  left: 80px;
+  top: 20px;
+  z-index: 9999;
+  color: #fff;
 }
