@@ -6,9 +6,7 @@ import { MapContainer, TileLayer, Marker, Popup, GeoJSON, CircleMarker } from 'r
 
 import geoData from './planetpatrol.js';
 
-function App() {
-
-  
+function App() {  
 
   const geojsonMarkerOptions = (radius) => {
     return {
