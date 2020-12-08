@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import L from 'leaflet';
+import { MapContainer, TileLayer, Marker, Popup, GeoJSON, CircleMarker } from 'react-leaflet';
 
 import geoData from './planetpatrol.js';
 
@@ -9,11 +10,26 @@ function App() {
   const mapBoxId = 'lucasterres/ckhqcpaho0xap19kejha475h9';
   const mapBoxToken = 'pk.eyJ1IjoibHVjYXN0ZXJyZXMiLCJhIjoiY2o2aHhhZHc2MGxoMjMzbnljZWNwd3JqciJ9.6Om_5YEOr-K1kEVBFZcq8w';
 
+  const geojsonMarkerOptions = (radius) => {
+    return {
+      radius,
+      fillColor: "#ff7800",
+      color: "#000",
+      weight: 2,
+      opacity: 1,
+      fillOpacity: 0.8
+    }
+  }
+
+  function myPointToLayer (latlng, radius) {
+    return L.circleMarker(latlng, geojsonMarkerOptions(radius));
+  }
+
   return (
     <div className="main-container">
       <h1 className="headline">Planet Patrol</h1>
 
-      <MapContainer center={[0, 0]} zoom={2} className="map-container">
+      <MapContainer center={[-5, -15]} zoom={4} className="map-container">
           <TileLayer
             attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
             url={`https://api.mapbox.com/styles/v1/${mapBoxId}/tiles/{z}/{x}/{y}?access_token=${mapBoxToken}`}
@@ -22,13 +38,20 @@ function App() {
           {geoData['features'].map((planet) => {
             setTimeout(500);
 
-            return (
-              <Marker key={planet.properties.ID} position={planet.geometry.coordinates}>
+            return ( 
+              <GeoJSON 
+                key={planet.properties.ID} 
+                data={planet} 
+                style={planet.geometry.type} 
+                pointToLayer={() => myPointToLayer(planet.geometry.coordinates, planet.properties.Kmag )}
+              >
                 <Popup>
-                  A pretty CSS3 popup. <br /> Easily customizable.
+                  <strong>ID: </strong>{planet.properties.ID}<br />
+                  <strong>Kmag: </strong>{planet.properties.Kmag}
                 </Popup>
-              </Marker>
 
+              </GeoJSON>
+                
             );
           })}
 
