@@ -37,7 +37,7 @@ function App() {
 
             return ( 
               <GeoJSON 
-                key={planet.properties.ID} 
+                key={planet.properties.} 
                 data={planet} 
                 style={planet.geometry.type} 
                 pointToLayer={() => myPointToLayer(planet.geometry.coordinates, planet.properties.Kmag )}
