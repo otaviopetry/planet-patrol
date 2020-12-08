@@ -1,5 +1,6 @@
 import './App.css';
 import React from 'react';
+import { mapBoxId, mapBoxToken } from './env.js';
 import L from 'leaflet';
 import { MapContainer, TileLayer, Marker, Popup, GeoJSON, CircleMarker } from 'react-leaflet';
 
@@ -7,8 +8,7 @@ import geoData from './planetpatrol.js';
 
 function App() {
 
-  const mapBoxId = 'lucasterres/ckhqcpaho0xap19kejha475h9';
-  const mapBoxToken = 'pk.eyJ1IjoibHVjYXN0ZXJyZXMiLCJhIjoiY2o2aHhhZHc2MGxoMjMzbnljZWNwd3JqciJ9.6Om_5YEOr-K1kEVBFZcq8w';
+  
 
   const geojsonMarkerOptions = (radius) => {
     return {
