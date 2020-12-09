@@ -22,7 +22,7 @@ function App() {
         return L.circleMarker(latlng, geojsonMarkerOptions(radius));
     }
 
-    const mapBoxId = 'lucasterres/ckhqcpaho0xap19kejha475h9';  
+    // const mapBoxId = 'lucasterres/ckhqcpaho0xap19kejha475h9';  
   
     return (
         <div className="main-container">
