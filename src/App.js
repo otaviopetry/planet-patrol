@@ -3,7 +3,10 @@ import React from 'react';
 import L from 'leaflet';
 import { MapContainer, TileLayer, Popup, GeoJSON  } from 'react-leaflet';
 import geoData from './planet_patrol_fix.json';
+<<<<<<< HEAD
 import backgroundImage from './images/nasa-galaxy.jpg';
+=======
+>>>>>>> a8f880fe2ac65e88123ffa606b6cab1372106650
 
 function App() {
   
@@ -22,12 +25,19 @@ function App() {
         return L.circleMarker(latlng, geojsonMarkerOptions(radius));
     }
 
+<<<<<<< HEAD
     const mapBoxId = 'lucasterres/ckhqcpaho0xap19kejha475h9';  
+=======
+    const mapBoxId = 'lucasterres/ckhqcpaho0xap19kejha475h9';
+
+  
+>>>>>>> a8f880fe2ac65e88123ffa606b6cab1372106650
   
     return (
         <div className="main-container">
         <h1 className="headline">Planet Patrol</h1>
 
+<<<<<<< HEAD
         <MapContainer center={[10, 100]} zoom={5} className="map-container"  >
             {/* <TileLayer
                 attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
@@ -35,6 +45,13 @@ function App() {
             /> */}
 
             <TileLayer url={backgroundImage} />
+=======
+        <MapContainer center={[10, 100]} zoom={5} className="map-container" >
+            <TileLayer
+                attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
+                url={`https://api.mapbox.com/styles/v1/${mapBoxId}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibHVjYXN0ZXJyZXMiLCJhIjoiY2o2aHhhZHc2MGxoMjMzbnljZWNwd3JqciJ9.6Om_5YEOr-K1kEVBFZcq8w`}
+            />
+>>>>>>> a8f880fe2ac65e88123ffa606b6cab1372106650
 
             {
                 geoData['features'].map((planet) => {
