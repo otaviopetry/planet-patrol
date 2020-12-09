@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import { mapBoxId, mapBoxToken } from './env.js';
+import { mapBoxToken } from './env.js';
 import L from 'leaflet';
 import { MapContainer, TileLayer, Popup, GeoJSON } from 'react-leaflet';
 import geoData from './planet_patrol_fix.json';
@@ -22,6 +22,15 @@ function App() {
     return L.circleMarker(latlng, geojsonMarkerOptions(radius));
   }
 
+  const mapBoxId = 'lucasterres/ckhqcpaho0xap19kejha475h9';
+  let theToken;
+    
+  if ( window.location.href.indexOf('vercel') !== -1 ) {
+      theToken = process.env.MAPBOX_TOKEN;
+  } else {
+      theToken = mapBoxToken;
+  }
+
   return (
     <div className="main-container">
       <h1 className="headline">Planet Patrol</h1>
@@ -29,7 +38,7 @@ function App() {
       <MapContainer center={[10, 100]} zoom={6} className="map-container" >
           <TileLayer
             attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
-            url={`https://api.mapbox.com/styles/v1/${mapBoxId}/tiles/{z}/{x}/{y}?access_token=${mapBoxToken}`}
+            url={`https://api.mapbox.com/styles/v1/${mapBoxId}/tiles/{z}/{x}/{y}?access_token=${theToken}`}
           />
 
           {
