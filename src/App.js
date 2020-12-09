@@ -30,7 +30,7 @@ function App() {
       <MapContainer center={[10, 100]} zoom={6} className="map-container" >
           <TileLayer
             attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
-            url={`https://api.mapbox.com/styles/v1/${mapBoxId}/tiles/{z}/{x}/{y}?access_token=${process.env.MAPBOX_TOKEN}`}
+            url={`https://api.mapbox.com/styles/v1/${mapBoxId}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibHVjYXN0ZXJyZXMiLCJhIjoiY2o2aHhhZHc2MGxoMjMzbnljZWNwd3JqciJ9.6Om_5YEOr-K1kEVBFZcq8w`}
           />
 
           {
