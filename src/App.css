@@ -54,19 +54,12 @@
   display: block;
   height: 30px;
   position: absolute;
-<<<<<<< HEAD
   left: 60px;
   z-index: 9999;
   color: #333;
   padding: 1rem;
 
   background-color: rgba(255, 255, 255, 0.7);
-=======
-  left: 80px;
-  top: 20px;
-  z-index: 9999;
-  color: #fff;
->>>>>>> a8f880fe2ac65e88123ffa606b6cab1372106650
 }
 
 body {
