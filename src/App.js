@@ -25,17 +25,14 @@ function App() {
     let filteredKmagArray = kmagArray.filter(element => element !== 0 && typeof(element) === "number")
 
     const [currentStar, setCurrentStar] = useState('');
-    let isStarOpen = false;    
 
     function openStar (star) {
         setCurrentStar(star);
-        isStarOpen = true;
         document.querySelector('#currentStarImg').classList.add('active');
     }
 
     function closeStar () {
         setCurrentStar('');
-        isStarOpen = false;
         document.querySelector('#currentStarImg').classList.remove('active');
     }
   
