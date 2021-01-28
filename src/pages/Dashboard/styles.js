@@ -30,9 +30,3 @@ export const StarInfo = styled.div`
   flex: 1;
   max-height: 300px;
 `;
-
-export const MapRules = css`
-  .map-container {
-    height: 500px;
-  }
-`;

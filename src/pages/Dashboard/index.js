@@ -2,6 +2,7 @@ import React from 'react';
 
 import Header from '../../components/Header';
 import Panel from '../../components/Panel';
+import PlanetPatrol from './components/PlanetPatrol';
 
 import { Wrapper, Sidebar, Main, UniverseExplorer, StarInfo } from './styles';
 
@@ -18,7 +19,9 @@ function Dashboard () {
         <Panel />
       </Sidebar>
       <Main>
-        <UniverseExplorer>UniverseExplorer</UniverseExplorer>
+        <UniverseExplorer>
+          <PlanetPatrol />
+        </UniverseExplorer>
         <StarInfo>StarInfo</StarInfo>
       </Main>
     </Wrapper>
