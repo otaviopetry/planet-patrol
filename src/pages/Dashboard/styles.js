@@ -1,9 +1,22 @@
 import styled from 'styled-components';
+import { COLORS } from '../../styles/globals';
 
-export const Container = styled.div`
-  background-color: firebrick;
-  
-  h1 {
-    color: yellowgreen;
-  }
+export const Wrapper = styled.div`
+  width: 100%;
+  min-height: 40rem;
+  background-color: red;
+  display: flex;
+  align-items: stretch;
+`;
+
+export const Sidebar = styled.aside`
+  flex: 0.2;
+  background-color: ${COLORS.darkPurple};
+  padding-top: 2rem;
+`;
+
+export const Main = styled.main`
+  flex: 0.8;
+  display: flex;
+  flex-direction: column;
 `;

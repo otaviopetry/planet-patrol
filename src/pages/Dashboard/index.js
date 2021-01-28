@@ -1,11 +1,18 @@
 import React from 'react';
-import { Container } from './styles';
+
+import Header from '../../components/Header';
+
+import { Wrapper, Sidebar, Main } from './styles';
 
 function Dashboard () {
   return (
-    <Container>
-      <h1>Dashboard</h1>
-    </Container>
+    <>
+    <Header />
+    <Wrapper>
+      <Sidebar />
+      <Main />
+    </Wrapper>
+    </>
   );
 }
 
