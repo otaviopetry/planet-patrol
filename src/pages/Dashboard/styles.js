@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { COLORS } from '../../styles/globals';
 
 export const Wrapper = styled.div`
@@ -18,4 +18,21 @@ export const Main = styled.main`
   flex: 0.8;
   display: flex;
   flex-direction: column;
+`;
+
+export const UniverseExplorer = styled.div`
+  background-color: green;
+  height: 500px;
+`;
+
+export const StarInfo = styled.div`
+  background-color: yellow;
+  flex: 1;
+  max-height: 300px;
+`;
+
+export const MapRules = css`
+  .map-container {
+    height: 500px;
+  }
 `;

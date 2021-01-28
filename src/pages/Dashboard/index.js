@@ -3,7 +3,7 @@ import React from 'react';
 import Header from '../../components/Header';
 import Panel from '../../components/Panel';
 
-import { Wrapper, Sidebar, Main } from './styles';
+import { Wrapper, Sidebar, Main, UniverseExplorer, StarInfo } from './styles';
 
 function Dashboard () {
   return (
@@ -17,7 +17,10 @@ function Dashboard () {
         <Panel />
         <Panel />
       </Sidebar>
-      <Main />
+      <Main>
+        <UniverseExplorer>UniverseExplorer</UniverseExplorer>
+        <StarInfo>StarInfo</StarInfo>
+      </Main>
     </Wrapper>
     </>
   );
