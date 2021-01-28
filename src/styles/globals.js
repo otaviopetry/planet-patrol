@@ -28,9 +28,4 @@ export default createGlobalStyle`
   button {
     cursor: pointer;
   }
-
-  .map-container {
-    min-height: 500px;
-    width: 100%;
-  }
 `;
