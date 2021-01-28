@@ -7,7 +7,6 @@ import { StarInfo } from './styles';
 
 import backgroundImage from '../../../../assets/images/nasa-galaxy.jpeg';
 import geoData from '../../../../assets/planet-patrol.json';
-import Panel from '../../../../components/Panel';
 
 function PlanetPatrol () {
   let tmagArray = [];
