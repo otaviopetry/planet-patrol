@@ -6,7 +6,6 @@ export const Wrapper = styled.div`
   min-height: 40rem;
   background-color: red;
   display: flex;
-  align-items: stretch;
 `;
 
 export const Sidebar = styled.aside`

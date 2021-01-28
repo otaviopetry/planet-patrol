@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Header from '../../components/Header';
+import Panel from '../../components/Panel';
 
 import { Wrapper, Sidebar, Main } from './styles';
 
@@ -9,7 +10,13 @@ function Dashboard () {
     <>
     <Header />
     <Wrapper>
-      <Sidebar />
+      <Sidebar>
+        <Panel />
+        <Panel />
+        <Panel />
+        <Panel />
+        <Panel />
+      </Sidebar>
       <Main />
     </Wrapper>
     </>
