@@ -3,9 +3,11 @@ import 'leaflet/dist/leaflet.css';
 import './styles.css';
 import L from 'leaflet';
 import { MapContainer, TileLayer, GeoJSON, Popup } from 'react-leaflet';
+import { StarInfo } from './styles';
 
 import backgroundImage from '../../../../assets/images/nasa-galaxy.jpeg';
 import geoData from '../../../../assets/planet-patrol.json';
+import Panel from '../../../../components/Panel';
 
 function PlanetPatrol () {
   let tmagArray = [];
@@ -15,6 +17,11 @@ function PlanetPatrol () {
       tmagArray.push(feature.properties.Tmag);
       kmagArray.push(feature.properties.Kmag);
   })
+  
+  // Exclude Kmags with zero value
+  let filteredKmagArray = kmagArray.filter(element => element !== 0 && typeof(element) === "number");
+  
+  const [currentStar, setCurrentStar] = useState('');
 
   function getAverage (array) {
       const sum = array.reduce((a, b) => a + b, 0);
@@ -22,19 +29,12 @@ function PlanetPatrol () {
       return sum/array.length;
   }
 
-  // Exclude Kmags with zero value
-  let filteredKmagArray = kmagArray.filter(element => element !== 0 && typeof(element) === "number");
-
-  const [currentStar, setCurrentStar] = useState('');
-
   function openStar (star) {
       setCurrentStar(star);
-      document.querySelector('#currentStarImg').classList.add('active');
   }
 
   function closeStar () {
       setCurrentStar('');
-      document.querySelector('#currentStarImg').classList.remove('active');
   }
 
   const geojsonMarkerOptions = (radius) => {
@@ -85,6 +85,12 @@ function PlanetPatrol () {
       }
       
     </MapContainer>
+    <StarInfo>
+        <div id="currentStar">
+            <h3 className="data-title">Current star</h3>
+            <p className="data-value">{currentStar !== '' ? 'ID: ' + currentStar : '-'}</p>
+        </div>      
+    </StarInfo>
     </>
   );
 }

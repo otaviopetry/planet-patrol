@@ -22,11 +22,4 @@ export const Main = styled.main`
 
 export const UniverseExplorer = styled.div`
   background-color: green;
-  height: 500px;
-`;
-
-export const StarInfo = styled.div`
-  background-color: yellow;
-  flex: 1;
-  max-height: 300px;
 `;

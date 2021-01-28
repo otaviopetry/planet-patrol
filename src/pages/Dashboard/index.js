@@ -4,7 +4,7 @@ import Header from '../../components/Header';
 import Panel from '../../components/Panel';
 import PlanetPatrol from './components/PlanetPatrol';
 
-import { Wrapper, Sidebar, Main, UniverseExplorer, StarInfo } from './styles';
+import { Wrapper, Sidebar, Main } from './styles';
 
 function Dashboard () {
   return (
@@ -19,10 +19,7 @@ function Dashboard () {
         <Panel />
       </Sidebar>
       <Main>
-        <UniverseExplorer>
-          <PlanetPatrol />
-        </UniverseExplorer>
-        <StarInfo>StarInfo</StarInfo>
+        <PlanetPatrol />
       </Main>
     </Wrapper>
     </>
