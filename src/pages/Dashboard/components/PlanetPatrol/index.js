@@ -52,6 +52,16 @@ function PlanetPatrol () {
       return L.circleMarker(latlng, geojsonMarkerOptions(radius));
   }
 
+  function starInfo (star) {
+    const href = 'https://exofop.ipac.caltech.edu/tess/target.php?id=' + star;
+    return (
+      <>
+      <p>ID: {star}</p>
+      <a href={href} target="_blank">https://exofop.ipac.caltech.edu/tess/target.php?id={star}</a>
+      </>
+    );
+  }
+
   return (
     <>
     <MapContainer center={[10, 100]} zoom={5} className="map-container">
@@ -88,7 +98,7 @@ function PlanetPatrol () {
     <StarInfo>
         <div id="currentStar">
             <h3 className="data-title">Current star</h3>
-            <p className="data-value">{currentStar !== '' ? 'ID: ' + currentStar : '-'}</p>
+            <p className="data-value">{currentStar !== '' ? starInfo(currentStar) : '-'}</p>
         </div>      
     </StarInfo>
     </>

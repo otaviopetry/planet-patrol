@@ -6,6 +6,7 @@ export const COLORS = {
   mediumPuple: '#182365',
   darkPurple: '#0b1435',
   pink: '#aa68bf',
+  backgroundColor: '#F0F0F5'
 };
 
 export default createGlobalStyle`
@@ -18,6 +19,7 @@ export default createGlobalStyle`
 
   body {
     -webkit-font-smoothing: antialiased;
+    background-color: ${COLORS.backgroundColor};
   }
 
   body, input, button {
