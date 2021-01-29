@@ -20,7 +20,7 @@ export const Wrapper = styled.div`
 export const Sidebar = styled.div`
   width: 100%;
   display: flex;
-  flex-wrap: row wrap;
+  flex-wrap: wrap;
   justify-content: flex-start;
 
   @media (min-width: 1300px) {
