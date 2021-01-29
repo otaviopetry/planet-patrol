@@ -61,13 +61,39 @@ function PlanetPatrol () {
     );
   }
 
-  var bounds = [[0,0], [310, 310]];
+  var bounds = [[-120,-20], [120, 380]];
 
   return (
     <>
-    <MapContainer center={[155, 155]} minZoom={-5} zoom={0} className="map-container" crs={CRS.Simple}>
+    <MapContainer center={[0, 180]} minZoom={1} zoom={2} maxBounds={bounds} className="map-container" crs={CRS.Simple}>
       <ImageOverlay url={mapImage} bounds={bounds} />
 
+      {
+        geoData['features'].map((planet) => {
+            return ( 
+                <GeoJSON                         
+                    key={planet.properties.ID} 
+                    data={planet} 
+                    style={planet.geometry.type} 
+                    pointToLayer={() => myPointToLayer([planet.geometry.coordinates[1], planet.geometry.coordinates[0]], planet.properties.Tmag )}
+                    
+                >
+                    <Popup position={[0, -20]} onOpen={() => openStar(planet.properties.ID)} onClose={closeStar}>
+                        <strong>ID: </strong>{planet.properties.ID}<br />
+                        <strong>Tmag: </strong>{planet.properties.Tmag}<br />
+                        <strong>Kmag: </strong>{planet.properties.Kmag}<br />
+                        <strong>Vmag: </strong>{planet.properties.Vmag}<br />
+                        <strong>e_rad: </strong>{planet.properties.e_rad}<br />
+                        <strong>Mass: </strong>{planet.properties.mass}<br />
+                        <strong>pmDEC: </strong>{planet.properties.pmDEC}<br />
+                        <strong>pmRA: </strong>{planet.properties.pmRA}<br />
+                        <strong>ra: </strong>{planet.properties.ra}<br />
+                        <strong>rad: </strong>{planet.properties.rad}<br />
+                    </Popup>
+                </GeoJSON>                
+            );
+        })
+      }
     </MapContainer>
     <StarInfo>
         <div id="currentStar">
