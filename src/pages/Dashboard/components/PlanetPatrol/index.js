@@ -3,7 +3,7 @@ import 'leaflet/dist/leaflet.css';
 import './styles.css';
 import L, { CRS } from 'leaflet';
 import { MapContainer, ImageOverlay, GeoJSON, Popup } from 'react-leaflet';
-import { Wrapper, Sidebar, StarInfo } from './styles';
+import { Wrapper, Sidebar } from './styles';
 
 import Panel from '../../../../components/Panel';
 
@@ -19,16 +19,7 @@ function PlanetPatrol () {
       kmagArray.push(feature.properties.Kmag);
   })
   
-  // Exclude Kmags with zero value
-  let filteredKmagArray = kmagArray.filter(element => element !== 0 && typeof(element) === "number");
-  
   const [currentStar, setCurrentStar] = useState('');
-
-  function getAverage (array) {
-      const sum = array.reduce((a, b) => a + b, 0);
-
-      return sum/array.length;
-  }
 
   function openStar (star) {
       setCurrentStar(star);
@@ -58,7 +49,7 @@ function PlanetPatrol () {
     return (
       <>
         <p>ID: {star}</p>
-        <a href={href} target="_blank">Check more information on ExoFOP</a>
+        <a href={href} target="_blank" rel="noreferrer">Check more information on ExoFOP</a>
       </>
     );
   }
