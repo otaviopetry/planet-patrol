@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { darken } from "polished";
 
 import { COLORS } from '../../styles/globals';
 
@@ -18,11 +19,11 @@ export const Container = styled.div`
   z-index: 100;
   border-radius: 5px;
   box-shadow: 0px 0px 4px rgba(0,0,0,0.5);
+  transition: all 0.2s ease-out;
 
   @media (min-width: 1300px) {
     width: 100%;
     padding: 3.5rem 1.25rem;
-
   }
 
   &::before {
@@ -51,7 +52,6 @@ export const Container = styled.div`
     border-bottom-right-radius: 8px;
   }
 
-
   &:last-child {
     margin-bottom: 0;
   }
@@ -63,5 +63,9 @@ export const Container = styled.div`
 
   a {
     color: #fff;
+  }
+
+  &:hover {
+    background: ${darken(0.05, COLORS.mainPurple)}
   }
 `;
