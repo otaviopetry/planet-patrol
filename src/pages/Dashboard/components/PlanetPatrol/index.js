@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import 'leaflet/dist/leaflet.css';
 import './styles.css';
-import L from 'leaflet';
+import L, { CRS } from 'leaflet';
 import { MapContainer, TileLayer, GeoJSON, Popup } from 'react-leaflet';
 import { StarInfo } from './styles';
 
-import mapImage from '../../../../assets/images/nasa-galaxy.jpeg';
+import mapImage from '../../../../assets/images/universe-grid.png';
 import geoData from '../../../../assets/planet-patrol.json';
-
 
 function PlanetPatrol () {
   let tmagArray = [];
@@ -62,12 +61,13 @@ function PlanetPatrol () {
     );
   }
 
-  var bounds = [[0,0], [1000,1000]];
+  var bounds = [[-160,-160], [150,150]];
 
   return (
     <>
-    <MapContainer center={[10, 100]} zoom={5} className="map-container" crs="Simple">
+    <MapContainer center={[500, 500]} minZoom={-5} zoom={5} maxBounds={bounds} className="map-container" crs={CRS.Simple}>
       <TileLayer url={mapImage} bounds={bounds} />
+
     </MapContainer>
     <StarInfo>
         <div id="currentStar">
