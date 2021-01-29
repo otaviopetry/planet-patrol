@@ -4,8 +4,8 @@ import { darken } from "polished";
 import { COLORS } from '../../styles/globals';
 
 export const Container = styled.div`
-  width: 24%;
-  height: 12rem;
+  width: 48%;
+  height: 9rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,6 +20,11 @@ export const Container = styled.div`
   border-radius: 5px;
   box-shadow: 0px 0px 4px rgba(0,0,0,0.5);
   transition: all 0.2s ease-out;
+
+  @media (min-width: 800px) {
+    width: 24%;
+    padding: 3.5rem 1.25rem;
+  }
 
   @media (min-width: 1300px) {
     width: 100%;
