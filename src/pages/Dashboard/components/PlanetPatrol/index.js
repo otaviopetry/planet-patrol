@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import 'leaflet/dist/leaflet.css';
 import './styles.css';
 import L, { CRS } from 'leaflet';
-import { MapContainer, TileLayer, GeoJSON, Popup } from 'react-leaflet';
+import { MapContainer, ImageOverlay, GeoJSON, Popup } from 'react-leaflet';
 import { StarInfo } from './styles';
 
 import mapImage from '../../../../assets/images/universe-grid.png';
@@ -61,12 +61,12 @@ function PlanetPatrol () {
     );
   }
 
-  var bounds = [[-160,-160], [150,150]];
+  var bounds = [[0,0], [310, 310]];
 
   return (
     <>
-    <MapContainer center={[500, 500]} minZoom={-5} zoom={5} maxBounds={bounds} className="map-container" crs={CRS.Simple}>
-      <TileLayer url={mapImage} bounds={bounds} />
+    <MapContainer center={[155, 155]} minZoom={-5} zoom={0} className="map-container" crs={CRS.Simple}>
+      <ImageOverlay url={mapImage} bounds={bounds} />
 
     </MapContainer>
     <StarInfo>
