@@ -1,11 +1,14 @@
 import React from 'react';
 
-import { Container, Title } from './styles';
+import { Container, Wrapper, Title } from './styles';
 
 function Header () {
   return (
     <Container>
-      <Title>Planet Patrol</Title>
+      <Wrapper>
+        <Title>Planet Patrol</Title>
+  
+      </Wrapper>
     </Container>
   );
 }

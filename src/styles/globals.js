@@ -25,6 +25,7 @@ export default createGlobalStyle`
   body, input, button {
     font: 1rem Ubuntu, sans-serif;
     color: #333;
+    background-color: ${COLORS.darkPurple};
   }
 
   button {

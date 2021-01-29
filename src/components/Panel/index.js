@@ -2,11 +2,11 @@ import React from 'react';
 
 import { Container } from './styles';
 
-function Panel () {
+function Panel ({title, info}) {
   return (
     <Container>
-      <h3>Mapped stars</h3>
-      <p>1973</p>
+      <h3>{title}</h3>
+      <p>{info}</p>
     </Container>
   );
 };

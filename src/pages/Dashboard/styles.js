@@ -3,12 +3,13 @@ import { COLORS } from '../../styles/globals';
 
 export const Wrapper = styled.div`
   width: 100%;
-  min-height: 40rem;
+  padding: 3rem 0;
   display: flex;
+  align-items: center;
 `;
 
 export const Sidebar = styled.aside`
-  flex: 0.2;
+  width: 20rem;
   background-color: ${COLORS.darkPurple};
   padding-top: 2rem;
 `;
