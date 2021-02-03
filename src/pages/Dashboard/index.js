@@ -4,7 +4,9 @@ import './styles.css';
 import L, { CRS } from 'leaflet';
 import { MapContainer, ImageOverlay, GeoJSON, Popup } from 'react-leaflet';
 
-import { Header, HeaderWrapper, HeaderTitle, SearchField, MainContainer, Sidebar } from './styles';
+import { Header, HeaderWrapper, HeaderTitle, SearchStar, MainContainer, Sidebar } from './styles';
+
+import { FaSearch } from 'react-icons/fa';
 
 import Panel from '../../components/Panel';
 
@@ -21,6 +23,7 @@ function Dashboard () {
   })
   
   const [currentStar, setCurrentStar] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
   function openStar (star) {
       setCurrentStar(star);
@@ -55,6 +58,10 @@ function Dashboard () {
     );
   }
 
+  function handleSearch (evt) {
+    console.log(evt.target);
+  }
+
   var bounds = [[-120,-20], [120, 380]];
 
   return (
@@ -62,7 +69,10 @@ function Dashboard () {
     <Header>
       <HeaderWrapper>
         <HeaderTitle>Planet Patrol</HeaderTitle>
-        <SearchField />
+        <SearchStar>
+          <input type="text" placeholder="Search for Star ID" onChange={(evt) => handleSearch(evt)} />
+          <FaSearch />
+        </SearchStar>
       </HeaderWrapper>
     </Header>
     

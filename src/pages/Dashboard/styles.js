@@ -21,13 +21,30 @@ export const HeaderTitle = styled.h1`
   text-align: center;
 `;
 
-export const SearchField = styled.input`
-  width: 15rem;
+export const SearchStar = styled.div`
   height: 32px;
   background-color: #fff;
   color: #333;
   border-radius: 0.5rem;
   font-size: 1.25rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 0.5rem;
+  
+  input {
+    border: 0;
+    outline: 0;
+    background-color: #fff;
+    color: #555;
+    padding-right: .5rem;
+  }
+
+  svg {
+    color: #555;
+  }
 `;
 
 export const MainContainer = styled.div`
