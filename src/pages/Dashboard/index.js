@@ -54,10 +54,7 @@ function Dashboard () {
   async function goToStar(starID) {
     let theStar = '';
     const theID = parseInt(starID);
-    console.log(theID);
     theStar = await geoData.features.filter(star => star.properties.ID === theID);
-
-    console.log(theStar);
 
     if (theStar[0]) {
       setCurrentStar(theStar[0]);
@@ -89,7 +86,7 @@ function Dashboard () {
     return null;
   }
 
-  var bounds = [[-120,-20], [120, 380]];
+  const bounds = [[-120,-20], [120, 380]];
 
   return (
     <>
