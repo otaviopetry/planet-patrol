@@ -4,18 +4,30 @@ import { COLORS } from '../../styles/globals';
 export const Header = styled.div`
   width: 100%;
   background-color: #f0f0f5;
-  height: 40px;
   padding: .5rem 0;
   position: fixed;
   z-index: 10000;
   display: flex;
+
+  @media (max-width: 720px) {
+    padding: 1rem 0;
+  }
 `;
+
 export const HeaderWrapper = styled.div`
+  width: 100%;
   max-width: 1300px;
+  min-width: 520px;
   margin: 0 auto;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  @media (max-width: 720px) {
+    width: 90%;
+    justify-content: space-between;
+  }
 `;
 
 export const HeaderTitle = styled.h1`
@@ -23,6 +35,11 @@ export const HeaderTitle = styled.h1`
   font-size: 1.4rem;
   color: ${COLORS.mainPurple};
   text-align: center;
+  margin-right: 2rem;
+
+  @media (max-width: 720px) {
+    text-align: left;
+  }
 `;
 
 export const SearchStar = styled.div`
@@ -37,6 +54,13 @@ export const SearchStar = styled.div`
   justify-content: center;
 
   padding: 0 0.5rem;
+
+  @media (max-width: 720px) {
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: .5rem;
+  }
   
   input {
     border: 0;
@@ -51,6 +75,11 @@ export const SearchStar = styled.div`
   }
 `;
 
+export const StarCount = styled.div`
+  margin-left: 2rem;
+  color: #555;
+`;
+
 export const MainContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -61,12 +90,27 @@ export const MainContainer = styled.div`
   justify-content: space-between;
   align-items: stretch;
   z-index: 10;
+  min-width: 520px;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
+
+  @media (max-width: 729px) {
+    padding-top: 114px;
+  }
 `;
 
 export const Sidebar = styled.aside`
   width: 20%;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 900px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
 `;
 
 export const TheMap = styled.div`
@@ -77,4 +121,8 @@ export const TheMap = styled.div`
   align-items: center;
   justify-content: center;
   border: 1px solid #6a6a6a;
+
+  @media (max-width: 900px) {
+    width: 100%;
+  }
 `;

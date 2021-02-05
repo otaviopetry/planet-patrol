@@ -4,7 +4,7 @@ import './styles.css';
 import L, { CRS } from 'leaflet';
 import { MapContainer, ImageOverlay, GeoJSON, Popup, useMap } from 'react-leaflet';
 
-import { Header, HeaderWrapper, SearchStar, MainContainer, Sidebar, TheMap } from './styles';
+import { Header, HeaderWrapper, HeaderTitle, SearchStar, StarCount, MainContainer, Sidebar, TheMap } from './styles';
 
 import { FaSearch } from 'react-icons/fa';
 
@@ -46,7 +46,7 @@ function Dashboard () {
     return (
       <>
         <span>ID: {star}</span><br />
-        <a href={href} target="_blank" rel="noreferrer">Check more information on ExoFOP</a>
+        <a href={href} target="_blank" rel="noreferrer">Check on ExoFOP</a>
       </>
     );
   }
@@ -92,14 +92,18 @@ function Dashboard () {
     <>
     <Header>
       <HeaderWrapper>
+        <HeaderTitle>Planet Patrol</HeaderTitle>
         <SearchStar>
             <input 
               type="text" 
               placeholder="Search for Star ID" 
               onChange={(evt) => setSearchTerm(evt.target.value)}
             />
-            <FaSearch onClick={() => goToStar(searchTerm)} />
+            <FaSearch onClick={() => goToStar(searchTerm)} />            
         </SearchStar>
+        <StarCount>
+          <strong>Mapped Stars:</strong> {geoData.features.length}
+        </StarCount>
       </HeaderWrapper>
     </Header>
     
@@ -131,8 +135,7 @@ function Dashboard () {
                         key={planet.properties.ID} 
                         data={planet} 
                         style={planet.geometry.type} 
-                        pointToLayer={() => myPointToLayer([planet.geometry.coordinates[1], planet.geometry.coordinates[0]], planet.properties.Tmag )}
-                        
+                        pointToLayer={() => myPointToLayer([planet.geometry.coordinates[1], planet.geometry.coordinates[0]], planet.properties.Tmag )}                        
                     >
                         <Popup onOpen={() => openStar(planet)} onClose={closeStar}>
                             <strong>ID: </strong>{planet.properties.ID}<br />

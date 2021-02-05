@@ -21,6 +21,12 @@ export const Container = styled.div`
   transition: all 0.2s ease-out;
   border: 1px solid #6a6a6a;
 
+  &:first-child {
+    h3 {
+      color: #ecec20;
+    }
+  }
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -28,7 +34,7 @@ export const Container = styled.div`
   h3 {
     margin-bottom: 1rem;
     text-transform: uppercase;
-    color: #7e5cdb;
+    color: #a58de8;
   }
 
   a {
@@ -37,5 +43,16 @@ export const Container = styled.div`
 
   &:hover {
     background: ${darken(0.05, COLORS.panelColor)}
+  }
+
+  @media (max-width: 900px) {
+    font-size: 0.9rem;
+    width: 24%;
+    height: 10rem;
+  }
+
+  @media (max-width: 650px) {
+    font-size: 0.85rem;
+    height: 8rem;
   }
 `;
