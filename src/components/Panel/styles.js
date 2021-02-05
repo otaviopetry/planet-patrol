@@ -21,6 +21,8 @@ export const Container = styled.div`
   transition: all 0.2s ease-out;
   border: 1px solid #6a6a6a;
 
+  order: 1;
+
   &:first-child {
     h3 {
       color: #ecec20;

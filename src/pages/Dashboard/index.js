@@ -4,7 +4,17 @@ import './styles.css';
 import L, { CRS } from 'leaflet';
 import { MapContainer, ImageOverlay, GeoJSON, Popup, useMap } from 'react-leaflet';
 
-import { Header, HeaderWrapper, HeaderTitle, SearchStar, StarCount, MainContainer, Sidebar, TheMap } from './styles';
+import { 
+  Header, 
+  HeaderWrapper, 
+  HeaderTitle, 
+  SearchStar, 
+  StarCount, 
+  MainContainer, 
+  Sidebar, 
+  TheMap,
+  ZooniverseBox
+} from './styles';
 
 import { FaSearch } from 'react-icons/fa';
 
@@ -12,6 +22,7 @@ import Panel from '../../components/Panel';
 
 import mapImage from '../../assets/images/universe-grid.png';
 import geoData from '../../assets/planet-patrol.json';
+import zooniverseLogo from '../../assets/images/zooniverse-logo.svg';
 
 function Dashboard () {  
   const [currentStar, setCurrentStar] = useState('');
@@ -113,6 +124,11 @@ function Dashboard () {
         <Panel title="Star coordinates" info={currentStar !== '' ? currentStar.geometry.coordinates[1] + ', ' + currentStar.geometry.coordinates[0] : '-'} />
         <Panel title="Star Tmag" info={currentStar !== '' ? currentStar.properties.Tmag : '-'} />
         <Panel title="Star Kmag" info={currentStar !== '' ? currentStar.properties.Kmag : '-'} />
+        <ZooniverseBox>
+          <a href="https://www.zooniverse.org/projects/marckuchner/planet-patrol/about/" target="_blank">
+            <img src={zooniverseLogo} alt="Zooniverse" />
+          </a>
+        </ZooniverseBox>
       </Sidebar>
 
       <TheMap>

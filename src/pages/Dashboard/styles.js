@@ -126,3 +126,30 @@ export const TheMap = styled.div`
     width: 100%;
   }
 `;
+
+export const ZooniverseBox = styled.div`
+  background-color: ${COLORS.panelColor};
+  width: 100%;
+  text-align: center;
+  padding: 0.7rem 0;
+  order: 2;
+
+  a {
+    height: 1.5rem;
+  }
+
+  img {
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 900px) {
+    margin-bottom: 0.75rem;
+    padding: 0.35rem 0;
+    order: 0;
+
+    img {
+      max-width: 100px;
+    }
+  }
+`;
