@@ -125,7 +125,7 @@ function Dashboard () {
         <Panel title="Star Tmag" info={currentStar !== '' ? currentStar.properties.Tmag : '-'} />
         <Panel title="Star Kmag" info={currentStar !== '' ? currentStar.properties.Kmag : '-'} />
         <ZooniverseBox>
-          <a href="https://www.zooniverse.org/projects/marckuchner/planet-patrol/about/" target="_blank">
+          <a href="https://www.zooniverse.org/projects/marckuchner/planet-patrol/about/" target="_blank" rel="noreferrer">
             <img src={zooniverseLogo} alt="Zooniverse" />
           </a>
         </ZooniverseBox>
