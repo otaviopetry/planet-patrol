@@ -81,7 +81,7 @@ function Dashboard () {
           <strong>rad: </strong>${currentStar.properties.rad}<br />
         `, [currentStar.geometry.coordinates[1], currentStar.geometry.coordinates[0]]);        
       }
-    }, [currentStar, map]);
+    }, [map]);
 
     return null;
   }
