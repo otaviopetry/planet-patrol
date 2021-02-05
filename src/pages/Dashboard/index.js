@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import 'leaflet/dist/leaflet.css';
 import './styles.css';
 import L, { CRS } from 'leaflet';
-import { MapContainer, ImageOverlay, GeoJSON, Popup } from 'react-leaflet';
+import { MapContainer, ImageOverlay, GeoJSON, Popup, useMap } from 'react-leaflet';
 
 import { Header, HeaderWrapper, HeaderTitle, SearchStar, MainContainer, Sidebar } from './styles';
 
@@ -23,7 +23,8 @@ function Dashboard () {
   })
   
   const [currentStar, setCurrentStar] = useState('');
-  const [searchTerm, setSearchTerm] = useState('');
+  // const [searchTerm, setSearchTerm] = useState('');
+  const [currentStarCoordinates, setCurrentStarCoordinates] = useState([0, 180]);
 
   function openStar (star) {
       setCurrentStar(star);
@@ -58,8 +59,21 @@ function Dashboard () {
     );
   }
 
-  function handleSearch (evt) {
-    console.log(evt.target);
+  async function goToStar(starID) {
+    let theStar = '';
+    theStar = await geoData.features.filter(star => star.properties.ID === starID);
+    
+    console.log(starID);
+    console.log(theStar);
+    setCurrentStarCoordinates([theStar[0].geometry.coordinates[1], theStar[0].geometry.coordinates[0]])
+  }
+
+  function MapController() {
+    const map = useMap();
+    
+    map.flyTo(currentStarCoordinates);
+
+    return null;
   }
 
   var bounds = [[-120,-20], [120, 380]];
@@ -68,10 +82,9 @@ function Dashboard () {
     <>
     <Header>
       <HeaderWrapper>
-        <HeaderTitle>Planet Patrol</HeaderTitle>
         <SearchStar>
-          <input type="text" placeholder="Search for Star ID" onChange={(evt) => handleSearch(evt)} />
-          <FaSearch />
+            <input type="text" placeholder="Search for Star ID" />
+            <FaSearch onClick={() => goToStar(142748283)} />
         </SearchStar>
       </HeaderWrapper>
     </Header>
@@ -84,8 +97,17 @@ function Dashboard () {
         <Panel title="Star Kmag" info={currentStar !== '' ? currentStar.properties.Kmag : '-'} />
       </Sidebar>
 
-      <MapContainer center={[0, 180]} minZoom={1} zoom={2} maxBounds={bounds} className="map-container" crs={CRS.Simple}>
+      <MapContainer 
+        center={currentStarCoordinates} 
+        minZoom={1} 
+        zoom={2} 
+        maxBounds={bounds} 
+        className="map-container" 
+        crs={CRS.Simple}
+      >
         <ImageOverlay url={mapImage} bounds={bounds} />
+
+        <MapController />
 
         {
           geoData['features'].map((planet) => {

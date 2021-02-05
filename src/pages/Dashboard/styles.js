@@ -4,13 +4,17 @@ import { COLORS } from '../../styles/globals';
 export const Header = styled.div`
   width: 100%;
   background-color: #f0f0f5;
-  padding: 1.25rem;
+  height: 40px;
+  padding: .5rem 0;
+  position: fixed;
+  z-index: 10000;
+  display: flex;
 `;
 export const HeaderWrapper = styled.div`
   max-width: 1300px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 `;
 
@@ -49,16 +53,15 @@ export const SearchStar = styled.div`
 
 export const MainContainer = styled.div`
   width: 100%;
-  max-width: 1300px;
   margin: 0 auto;
-  padding: 3rem 0;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  padding-top: 56px;
+  padding: 56px 1rem 1rem;
+  justify-content: space-between;
+  align-items: flex-start;
+  z-index: 10;
 `;
 
 export const Sidebar = styled.aside`
   width: 20rem;
-  background-color: ${COLORS.darkPurple};
-  padding-top: 2rem;
 `;
