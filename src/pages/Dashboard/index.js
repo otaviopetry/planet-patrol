@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'leaflet/dist/leaflet.css';
 import './styles.css';
 import L, { CRS } from 'leaflet';
@@ -13,17 +13,9 @@ import Panel from '../../components/Panel';
 import mapImage from '../../assets/images/universe-grid.png';
 import geoData from '../../assets/planet-patrol.json';
 
-function Dashboard () {
-  let tmagArray = [];
-  let kmagArray = [];
-
-  geoData.features.forEach(feature => {
-      tmagArray.push(feature.properties.Tmag);
-      kmagArray.push(feature.properties.Kmag);
-  })
-  
+function Dashboard () {  
   const [currentStar, setCurrentStar] = useState('');
-  // const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
   const [currentStarCoordinates, setCurrentStarCoordinates] = useState([0, 180]);
 
   function openStar (star) {
@@ -53,7 +45,7 @@ function Dashboard () {
     const href = 'https://exofop.ipac.caltech.edu/tess/target.php?id=' + star;
     return (
       <>
-        <p>ID: {star}</p>
+        <span>ID: {star}</span><br />
         <a href={href} target="_blank" rel="noreferrer">Check more information on ExoFOP</a>
       </>
     );
@@ -61,17 +53,38 @@ function Dashboard () {
 
   async function goToStar(starID) {
     let theStar = '';
-    theStar = await geoData.features.filter(star => star.properties.ID === starID);
-    
-    console.log(starID);
+    const theID = parseInt(starID);
+    console.log(theID);
+    theStar = await geoData.features.filter(star => star.properties.ID === theID);
+
     console.log(theStar);
-    setCurrentStarCoordinates([theStar[0].geometry.coordinates[1], theStar[0].geometry.coordinates[0]])
+
+    if (theStar[0]) {
+      setCurrentStar(theStar[0]);
+      setCurrentStarCoordinates([theStar[0].geometry.coordinates[1], theStar[0].geometry.coordinates[0]]);
+    }
   }
 
   function MapController() {
     const map = useMap();
     
-    map.flyTo(currentStarCoordinates);
+    useEffect(() => {
+      if (currentStar !== '') {
+        map.flyTo([currentStar.geometry.coordinates[1], currentStar.geometry.coordinates[0]]);
+        map.openPopup(`
+          <strong>ID: </strong>${currentStar.properties.ID}<br />
+          <strong>Tmag: </strong>${currentStar.properties.Tmag}<br />
+          <strong>Kmag: </strong>${currentStar.properties.Kmag}<br />
+          <strong>Vmag: </strong>${currentStar.properties.Vmag}<br />
+          <strong>e_rad: </strong>${currentStar.properties.e_rad}<br />
+          <strong>Mass: </strong>${currentStar.properties.mass}<br />
+          <strong>pmDEC: </strong>${currentStar.properties.pmDEC}<br />
+          <strong>pmRA: </strong>${currentStar.properties.pmRA}<br />
+          <strong>ra: </strong>${currentStar.properties.ra}<br />
+          <strong>rad: </strong>${currentStar.properties.rad}<br />
+        `, [currentStar.geometry.coordinates[1], currentStar.geometry.coordinates[0]]);        
+      }
+    }, [currentStar, map]);
 
     return null;
   }
@@ -83,8 +96,12 @@ function Dashboard () {
     <Header>
       <HeaderWrapper>
         <SearchStar>
-            <input type="text" placeholder="Search for Star ID" />
-            <FaSearch onClick={() => goToStar(142748283)} />
+            <input 
+              type="text" 
+              placeholder="Search for Star ID" 
+              onChange={(evt) => setSearchTerm(evt.target.value)}
+            />
+            <FaSearch onClick={() => goToStar(searchTerm)} />
         </SearchStar>
       </HeaderWrapper>
     </Header>
@@ -120,7 +137,7 @@ function Dashboard () {
                         pointToLayer={() => myPointToLayer([planet.geometry.coordinates[1], planet.geometry.coordinates[0]], planet.properties.Tmag )}
                         
                     >
-                        <Popup position={[0, -20]} onOpen={() => openStar(planet)} onClose={closeStar}>
+                        <Popup onOpen={() => openStar(planet)} onClose={closeStar}>
                             <strong>ID: </strong>{planet.properties.ID}<br />
                             <strong>Tmag: </strong>{planet.properties.Tmag}<br />
                             <strong>Kmag: </strong>{planet.properties.Kmag}<br />
