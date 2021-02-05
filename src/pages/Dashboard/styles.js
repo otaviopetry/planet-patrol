@@ -85,8 +85,7 @@ export const MainContainer = styled.div`
   height: 100%;
   margin: 0 auto;
   display: flex;
-  padding-top: 56px;
-  padding: 56px 1rem 1rem;
+  padding: 64px 1rem 1rem;
   justify-content: space-between;
   align-items: stretch;
   z-index: 10;
