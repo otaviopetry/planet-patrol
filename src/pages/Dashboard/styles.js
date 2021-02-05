@@ -10,14 +10,14 @@ export const Header = styled.div`
   display: flex;
 
   @media (max-width: 720px) {
-    padding: 1rem 0;
+    padding: 1rem 1rem;
   }
 `;
 
 export const HeaderWrapper = styled.div`
   width: 100%;
   max-width: 1300px;
-  min-width: 520px;
+  min-width: 480px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -90,7 +90,7 @@ export const MainContainer = styled.div`
   justify-content: space-between;
   align-items: stretch;
   z-index: 10;
-  min-width: 520px;
+  min-width: 480px;
 
   @media (max-width: 900px) {
     flex-direction: column;
