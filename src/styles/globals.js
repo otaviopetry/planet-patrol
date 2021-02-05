@@ -5,8 +5,10 @@ export const COLORS = {
   brightPurple: '#7498cf',
   mediumPuple: '#182365',
   darkPurple: '#0b1435',
+  darkestPurple: '#05070b',
   pink: '#aa68bf',
-  backgroundColor: '#F0F0F5'
+  backgroundColor: '#F0F0F5',
+  panelColor: '#222222'
 };
 
 export default createGlobalStyle`
@@ -25,7 +27,7 @@ export default createGlobalStyle`
   body, input, button {
     font: 1rem Ubuntu, sans-serif;
     color: #333;
-    background-color: ${COLORS.darkPurple};
+    background-color: ${COLORS.darkestPurple};
   }
 
   button {

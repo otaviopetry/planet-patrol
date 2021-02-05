@@ -4,58 +4,22 @@ import { darken } from "polished";
 import { COLORS } from '../../styles/globals';
 
 export const Container = styled.div`
-  width: 48%;
-  height: 9rem;
+  width: 100%;
+  padding: 2rem 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   margin: 0 auto;
-  background-color: ${COLORS.mainPurple};
+  background-color: ${COLORS.panelColor};
   color: #fff;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: .75rem;
   position: relative;
   z-index: 100;
-  border-radius: 5px;
-  box-shadow: 0px 0px 4px rgba(0,0,0,0.5);
+  border-radius: 2px;
   transition: all 0.2s ease-out;
-
-  @media (min-width: 800px) {
-    width: 24%;
-    padding: 3.5rem 1.25rem;
-  }
-
-  @media (min-width: 1300px) {
-    width: 100%;
-    padding: 3.5rem 1.25rem;
-  }
-
-  &::before {
-    content: '';
-    width: 95%;
-    height: 6px;
-    background-color: ${COLORS.brightPurple};
-    position: absolute;
-    bottom: -6px;
-    left: 2.5%;
-    z-index: -100;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-  }
-
-  &::after {
-    content: '';
-    width: 90%;
-    height: 6px;
-    background-color: ${COLORS.pink};
-    position: absolute;
-    bottom: -12px;
-    left: 5%;
-    z-index: -100;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-  }
+  border: 1px solid #6a6a6a;
 
   &:last-child {
     margin-bottom: 0;
@@ -64,6 +28,7 @@ export const Container = styled.div`
   h3 {
     margin-bottom: 1rem;
     text-transform: uppercase;
+    color: #7e5cdb;
   }
 
   a {
@@ -71,6 +36,6 @@ export const Container = styled.div`
   }
 
   &:hover {
-    background: ${darken(0.05, COLORS.mainPurple)}
+    background: ${darken(0.05, COLORS.panelColor)}
   }
 `;
