@@ -4,7 +4,7 @@ import './styles.css';
 import L, { CRS } from 'leaflet';
 import { MapContainer, ImageOverlay, GeoJSON, Popup, useMap } from 'react-leaflet';
 
-import { Header, HeaderWrapper, HeaderTitle, SearchStar, MainContainer, Sidebar } from './styles';
+import { Header, HeaderWrapper, SearchStar, MainContainer, Sidebar, TheMap } from './styles';
 
 import { FaSearch } from 'react-icons/fa';
 
@@ -97,45 +97,47 @@ function Dashboard () {
         <Panel title="Star Kmag" info={currentStar !== '' ? currentStar.properties.Kmag : '-'} />
       </Sidebar>
 
-      <MapContainer 
-        center={currentStarCoordinates} 
-        minZoom={1} 
-        zoom={2} 
-        maxBounds={bounds} 
-        className="map-container" 
-        crs={CRS.Simple}
-      >
-        <ImageOverlay url={mapImage} bounds={bounds} />
-
-        <MapController />
-
-        {
-          geoData['features'].map((planet) => {
-              return ( 
-                  <GeoJSON                         
-                      key={planet.properties.ID} 
-                      data={planet} 
-                      style={planet.geometry.type} 
-                      pointToLayer={() => myPointToLayer([planet.geometry.coordinates[1], planet.geometry.coordinates[0]], planet.properties.Tmag )}
-                      
-                  >
-                      <Popup position={[0, -20]} onOpen={() => openStar(planet)} onClose={closeStar}>
-                          <strong>ID: </strong>{planet.properties.ID}<br />
-                          <strong>Tmag: </strong>{planet.properties.Tmag}<br />
-                          <strong>Kmag: </strong>{planet.properties.Kmag}<br />
-                          <strong>Vmag: </strong>{planet.properties.Vmag}<br />
-                          <strong>e_rad: </strong>{planet.properties.e_rad}<br />
-                          <strong>Mass: </strong>{planet.properties.mass}<br />
-                          <strong>pmDEC: </strong>{planet.properties.pmDEC}<br />
-                          <strong>pmRA: </strong>{planet.properties.pmRA}<br />
-                          <strong>ra: </strong>{planet.properties.ra}<br />
-                          <strong>rad: </strong>{planet.properties.rad}<br />
-                      </Popup>
-                  </GeoJSON>                
-              );
-          })
-        }
-      </MapContainer>    
+      <TheMap>
+        <MapContainer 
+          center={currentStarCoordinates} 
+          minZoom={1} 
+          zoom={2} 
+          maxBounds={bounds} 
+          className="map-container" 
+          crs={CRS.Simple}
+        >
+          <ImageOverlay url={mapImage} bounds={bounds} />
+  
+          <MapController />
+  
+          {
+            geoData['features'].map((planet) => {
+                return ( 
+                    <GeoJSON                         
+                        key={planet.properties.ID} 
+                        data={planet} 
+                        style={planet.geometry.type} 
+                        pointToLayer={() => myPointToLayer([planet.geometry.coordinates[1], planet.geometry.coordinates[0]], planet.properties.Tmag )}
+                        
+                    >
+                        <Popup position={[0, -20]} onOpen={() => openStar(planet)} onClose={closeStar}>
+                            <strong>ID: </strong>{planet.properties.ID}<br />
+                            <strong>Tmag: </strong>{planet.properties.Tmag}<br />
+                            <strong>Kmag: </strong>{planet.properties.Kmag}<br />
+                            <strong>Vmag: </strong>{planet.properties.Vmag}<br />
+                            <strong>e_rad: </strong>{planet.properties.e_rad}<br />
+                            <strong>Mass: </strong>{planet.properties.mass}<br />
+                            <strong>pmDEC: </strong>{planet.properties.pmDEC}<br />
+                            <strong>pmRA: </strong>{planet.properties.pmRA}<br />
+                            <strong>ra: </strong>{planet.properties.ra}<br />
+                            <strong>rad: </strong>{planet.properties.rad}<br />
+                        </Popup>
+                    </GeoJSON>                
+                );
+            })
+          }
+        </MapContainer>
+      </TheMap>    
     </MainContainer>
     </>
   );

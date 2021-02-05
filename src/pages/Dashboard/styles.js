@@ -53,15 +53,28 @@ export const SearchStar = styled.div`
 
 export const MainContainer = styled.div`
   width: 100%;
+  height: 100%;
   margin: 0 auto;
   display: flex;
   padding-top: 56px;
   padding: 56px 1rem 1rem;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: stretch;
   z-index: 10;
 `;
 
 export const Sidebar = styled.aside`
-  width: 20rem;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const TheMap = styled.div`
+  background-color: ${COLORS.panelColor};
+  width: 79%;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #6a6a6a;
 `;
